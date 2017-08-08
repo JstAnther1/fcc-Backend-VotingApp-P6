@@ -1,0 +1,14 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">  
+    <div class="navbar-header">
+      <a routerLink="/allcurrentpolls" class="navbar-brand">VotingApp</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li routerLinkActive="active" *ngIf="usersocialdata.handle"><a>Welcome {{ usersocialdata.handle }}, {{ usersocialdata.email }}</a></li>
+        <li routerLinkActive="active" *ngIf="!usersocialdata.handle"><a routerLink="/login">Login</a></li>
+        <li routerLinkActive="active" *ngIf="usersocialdata.handle" (click)="toLogout()"><a routerLink="/allcurrentpolls" target="_self">Logout</a></li>
+      </ul>
+    </div>
+  </div>  
+</nav>

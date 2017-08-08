@@ -1,0 +1,8 @@
+<h3>Poll Title: {{ polldata.title }}</h3>
+
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="radio" *ngFor="let option of polldata.options">
+    <label><input type="radio" name="option" ngModel [value]="option" required>{{ option }}</label>
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Vote</button>
+</form> 

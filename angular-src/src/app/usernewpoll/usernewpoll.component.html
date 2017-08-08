@@ -1,0 +1,55 @@
+<form [formGroup]="polloptionsForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-xs-12">
+      <div formGroupName="pollData">
+        <div class="form-group">
+          <label for="PollTitle">Poll Title</label>
+          <input type="text" id="PollTitle" formControlName="pollTitle" class="form-control">
+          <span *ngIf="!polloptionsForm.get('pollData.pollTitle').valid && polloptionsForm.get('pollData.pollTitle').touched" class="help-block"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-11 col-xs-offset-1">
+      <div class="form-group">
+        <label for="Option1">Option 1:</label>
+        <input type="text" id="Option1" formControlName="option1" class="form-control">
+        <span *ngIf="!polloptionsForm.get('option1').valid && polloptionsForm.get('option1').touched" class="help-block">Please enter an option</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-11 col-xs-offset-1">
+      <div class="form-group">
+        <label for="Option2">Option 2:</label>
+        <input type="text" id="Option2" formControlName="option2" class="form-control">
+        <span *ngIf="!polloptionsForm.get('option2').valid && polloptionsForm.get('option2').touched" class="help-block">Please enter an option</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div formArrayName="addioptions">
+      <div *ngFor="let optionControl of polloptionsForm.get('addioptions').controls; let i = index">
+        <div class="row verticalalignX">
+          <div class="col-xs-9 col-xs-offset-1">
+            <label>Option {{ i+3 }}:</label>
+            <input type="text" class="form-control" [formControlName]="i">
+          </div>
+          <div class="col-xs-2">
+            <button class="btn btn-danger" type="button" (click)="onDeleteAddiOption()">X</button>
+          </div>
+        </div>    
+      </div>
+    </div>
+  </div>
+  
+  
+  <br>
+  <div class="row">
+    <button class="btn btn-default" type="button" (click)="onAddOption()">Add Options</button>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</form>

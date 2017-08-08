@@ -1,0 +1,7 @@
+<div class="row">
+  <div class="col-xs-12 list-group">
+    <app-polltitles *ngFor = "let poll of polldata; let i = index" [polldat]="poll" [index]="i"></app-polltitles>
+  </div>
+</div>
+<button class="btn btn-primary" routerLink="/createnewpoll" *ngIf="usersocialdata.handle">Create New Poll</button>
+<button class="btn btn-primary" routerLink="/delpoll" *ngIf="usersocialdata.handle">Delete Poll</button>
